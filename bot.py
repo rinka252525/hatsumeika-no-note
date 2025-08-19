@@ -69,16 +69,16 @@ async def answer2(ctx, *, user_answer: str):
     correct_answer = answers.get(progress)
 
     if user_answer.lower() == correct_answer.lower():
-        await ctx.send("✅ 正解！")
+        await ctx.send("「なんと！近くにいるので探してみます！」")
+        await ctx.send(file=discord.File("dig.png"))
+        await ctx.send("「・・・ありました！」")
 
-        if progress == "puzzle1":
+        if progress == "puzzle2":
             # 次の謎へ
-            user_progress[ctx.author.id] = "puzzle2"
-            await ctx.send("次の謎はこちらです👇")
-            await ctx.send(file=discord.File("puzzle2.png"))
-
-        elif progress == "puzzle2":
-            await ctx.send("🎉 全問正解！おめでとうございます！")
+            user_progress[ctx.author.id] = "puzzle3"
+            await ctx.send("「部品が揃ったので組み立てたいと思います。完成品は何になりそうですか？」")
+            await ctx.send(file=discord.File("puzzle3-1.png"))
+            await ctx.send(file=discord.File("puzzle3-3.png"))
 
     else:
         await ctx.send("❌ 不正解です。もう一度挑戦してみてください。")
@@ -95,17 +95,16 @@ async def answer3(ctx, *, user_answer: str):
     correct_answer = answers.get(progress)
 
     if user_answer.lower() == correct_answer.lower():
-        await ctx.send("✅ 正解！")
+        await ctx.send("「すごい！本当に完成したんですね。折角なので覗いてみてください。」")
+        await ctx.send("そう言って彼は望遠鏡をさしだす。街の灯り、星の瞬き、すべてがある色で染まっていく。")
 
-        if progress == "puzzle1":
+        if progress == "puzzle3":
             # 次の謎へ
-            user_progress[ctx.author.id] = "puzzle2"
+            user_progress[ctx.author.id] = "puzzle4"
             await ctx.send("次の謎はこちらです👇")
-            await ctx.send(file=discord.File("puzzle2.png"))
-
-        elif progress == "puzzle2":
-            await ctx.send("🎉 全問正解！おめでとうございます！")
-
+            await ctx.send(file=discord.File("puzzle4.mp3"))
+            await ctx.send(file=discord.File("puzzle4.png"))
+            
     else:
         await ctx.send("❌ 不正解です。もう一度挑戦してみてください。")
 
@@ -123,16 +122,39 @@ async def answer4(ctx, *, user_answer: str):
     correct_answer = answers.get(progress)
 
     if user_answer.lower() == correct_answer.lower():
-        await ctx.send("✅ 正解！")
+        await ctx.send("「ええ！？望遠鏡で見ると違った世界が見える…あ、これ設計書によると未来が見える望遠鏡のようですね。」")
+        await ctx.send("「未来で何があるんだろう…」")
 
-        if progress == "puzzle1":
+        if progress == "puzzle4":
             # 次の謎へ
-            user_progress[ctx.author.id] = "puzzle2"
-            await ctx.send("次の謎はこちらです👇")
-            await ctx.send(file=discord.File("puzzle2.png"))
+            user_progress[ctx.author.id] = "ending"
+            await ctx.send("「あなたがたはどうしたいですか？」")
+            await ctx.send("A：発明品を世に広める B：封印する C：自分たちで独占する")
 
-        elif progress == "puzzle2":
-            await ctx.send("🎉 全問正解！おめでとうございます！")
+    else:
+        await ctx.send("❌ 不正解です。もう一度挑戦してみてください。")
+
+
+
+@bot.command()
+async def end(ctx, *, user_answer: str):
+    progress = user_progress.get(ctx.author.id)
+
+    if not progress:
+        await ctx.send("⚠️ まずは `!start` でゲームを始めてください。")
+        return
+
+    correct_answer = answers.get(progress)
+
+    if user_answer.lower() == correct_answer.lower():
+        await ctx.send("「ええ！？望遠鏡で見ると違った世界が見える…あ、これ設計書によると未来が見える望遠鏡のようですね。」")
+        await ctx.send("「未来で何があるんだろう…」")
+
+        if progress == "puzzle4":
+            # 次の謎へ
+            user_progress[ctx.author.id] = "ending"
+            await ctx.send("「あなたがたはどうしたいですか？」")
+            await ctx.send("A：発明品を世に広める B：封印する C：自分たちで独占する")
 
     else:
         await ctx.send("❌ 不正解です。もう一度挑戦してみてください。")
