@@ -24,7 +24,8 @@ async def on_ready():
 @bot.command()
 async def start(ctx):
     user_progress[ctx.author.id] = "puzzle1"
-    await ctx.send("🔮 謎解き開始！ まずはこの謎を解いてください👇")
+    await ctx.send("「こんにちは！僕は普段機械の開発研究をしているんだけど師匠の設計図を解読できず、解読班である君たちにお願いしたいと思って連絡させてもらったんだ。」")
+    await ctx.send("「博士のごちゃごちゃの部屋で管理していたので順番がばらばらになってしまいました。まずは並べ替えからお願いします。それぞれの紙にこんなマークがあるので、これが順番を表していると思うのですが…」")
     await ctx.send(file=discord.File("puzzle1.png"))
 
 # 解答コマンド
