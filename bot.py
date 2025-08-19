@@ -47,11 +47,12 @@ async def answer1(ctx, *, user_answer: str):
         if progress == "puzzle1":
             # 次の謎へ
             user_progress[ctx.author.id] = "puzzle2"
-            await ctx.send("次の謎はこちらです👇")
-            await ctx.send(file=discord.File("puzzle2.png"))
-
-        elif progress == "puzzle2":
-            await ctx.send("🎉 全問正解！おめでとうございます！")
+            await ctx.send("「わあ！たしかにこの順番のようです！」")
+            await ctx.send("「あれ、でも、博士はいらずら好きだったので大切な部品を隠したみたいです。どこに隠したかわかりますか？」")
+            await ctx.send(file=discord.File("puzzle2-1.png"))
+            await ctx.send(file=discord.File("puzzle2-2.png"))
+            await ctx.send(file=discord.File("puzzle2-3.png"))
+            await ctx.send(file=discord.File("puzzle2-4.png"))
 
     else:
         await ctx.send("❌ 不正解です。もう一度挑戦してみてください。")
