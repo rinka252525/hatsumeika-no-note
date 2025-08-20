@@ -102,7 +102,7 @@ async def on_message(message):
                 set_progress(guild_id, user_id, "ending")
                 await message.channel.send("「ええ！？望遠鏡で見ると違った世界が見える…あ、これ設計書によると未来が見える望遠鏡のようですね。」\n"
                                            "「未来で何があるんだろう…」")
-                await message.channel.send("'!ending' A：発明品を世に広める B：封印する C：独占する")
+                await message.channel.send(" `!ending`  A：発明品を世に広める B：封印する C：独占する")
         else:
             await message.channel.send("「うーん…違うみたいだ」")
 
@@ -116,15 +116,18 @@ async def ending(ctx, choice: str):
     endings = {
         "A": {
             "message": "おめでとう！ 未来は祝福に満ちています！",
-            "file": "ending_A.png"
+            "file": "ending_A.png",
+            "message": "クリア記念によければ `#発明家のノート` でツイートしてください！モチベになります。"
         },
         "B": {
             "message": "ノートは闇に閉ざされた……",
-            "file": "ending_B.png"
+            "file": "ending_B.png",
+            "message": "クリア記念によければ `#発明家のノート` でツイートしてください！モチベになります。"
         },
         "C": {
             "message": "怪しい契約書にサインが刻まれた……",
-            "file": "ending_C.png"
+            "file": "ending_C.png",
+            "message": "クリア記念によければ `#発明家のノート` でツイートしてください！モチベになります。"
         }
     }
 
