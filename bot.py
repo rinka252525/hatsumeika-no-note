@@ -68,7 +68,11 @@ async def on_message(message):
             if progress == "puzzle1":
                 user_progress[user_id] = "puzzle2"
                 await message.channel.send("「でも、博士はいらずら好きだったから大切な部品を隠しちゃったんだ。どこに隠したかわかる？」")
-                await message.channel.send(file=discord.File("puzzle2-1.png","puzzle2-2.png","puzzle2-3.png","puzzle2-4.png"))
+                await message.channel.send(file=discord.File("puzzle2-1.png"))
+                await message.channel.send(file=discord.File("puzzle2-2.png"))
+                await message.channel.send(file=discord.File("puzzle2-3.png"))
+                await message.channel.send(file=discord.File("puzzle2-4.png"))
+
 
             elif progress == "puzzle2":
                 user_progress[user_id] = "puzzle3"
