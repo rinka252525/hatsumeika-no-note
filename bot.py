@@ -91,8 +91,28 @@ async def on_message(message):
         else:
             await message.channel.send("❌ 不正解です。")
 
+
     # 他のコマンドも動くように必要
     await bot.process_commands(message)
+
+@bot.command()
+async def ending(ctx, choice: str):
+    choice = choice.upper()
+
+    if choice == "A":
+        file = discord.File("ending_A.png", filename="ending_A.png")
+        await ctx.send("✨祝福のメッセージ✨", file=file)
+
+    elif choice == "B":
+        file = discord.File("ending_B.png", filename="ending_B.png")
+        await ctx.send("📓暗転したノートの表紙が現れた…", file=file)
+
+    elif choice == "C":
+        file = discord.File("ending_C.png", filename="ending_C.png")
+        await ctx.send("📜怪しい契約書が差し出された…", file=file)
+
+    else:
+        await ctx.send("選択肢は A / B / C から選んでください！")
 
 
 # 実行
