@@ -38,14 +38,16 @@ async def on_guild_join(guild):
             break
     
     if channel:
-        await channel.send("こんにちは！招待ありがとう。準備ができました✨")
-
+        await channel.send("「こんにちは！僕は普段機械の開発研究をしているんだけど博士の設計図を解読できず、解読班である君たちにお願いしたいと思って連絡させてもらったんだ。\n"
+                           "準備が出来たら `!start` で教えてね！")
+        
 
 # スタートコマンドで謎1を送信
 @bot.command()
 async def start(ctx):
     user_progress[ctx.author.id] = "puzzle1"
-    await ctx.send("「まずは並べ替えからお願いします」")
+    await ctx.send("「博士のごちゃごちゃの部屋で管理していたので順番がばらばらになっちゃったんだ。\n"
+                   "まずは並べ替えからお願いしていいかな？それぞれの紙にこんな丸があるから、これが順番を表していると思うんだけど…」")
     await ctx.send(file=discord.File("puzzle1.png"))
 
 
@@ -61,27 +63,31 @@ async def on_message(message):
     if progress:
         possible_answers = answers.get(progress, [])
         if message.content.strip().lower() in [a.lower() for a in possible_answers]:
-            await message.channel.send("✅ 正解！")
+            await message.channel.send("「わあありがとう！たしかにこの順番みたいだ！」")
 
             if progress == "puzzle1":
                 user_progress[user_id] = "puzzle2"
-                await message.channel.send("「次の謎はこちら！」")
-                await message.channel.send(file=discord.File("puzzle2-1.png"))
+                await message.channel.send("「でも、博士はいらずら好きだったから大切な部品を隠しちゃったんだ。どこに隠したかわかる？」")
+                await message.channel.send(file=discord.File("puzzle2-1.png","puzzle2-2.png","puzzle2-3.png","puzzle2-4.png"))
 
             elif progress == "puzzle2":
                 user_progress[user_id] = "puzzle3"
-                await message.channel.send("「部品が揃った！これは何になる？」")
-                await message.channel.send(file=discord.File("puzzle3-1.png"))
+                await message.channel.send("「部品が揃った！完成品は何になる？」")
+                await message.channel.send(file=discord.File("puzzle3.png"))
 
             elif progress == "puzzle3":
                 user_progress[user_id] = "puzzle4"
-                await message.channel.send("「完成した！次の謎はこちら！」")
+                await message.channel.send("「すごい！なるほど、望遠鏡だったのか！折角なので覗いてみてください！」/n"
+                                          "「この望遠鏡は肉眼じゃなくても君たちのPCから見れるようにしたよ。」")
+                await message.channel.send("そう言って彼は望遠鏡をさしだす。街の灯り、星の瞬き、すべてがある色で染まっていく。")
                 await message.channel.send(file=discord.File("puzzle4.png"))
+                await message.channel.send(file=discord.File("puzzle4.mp3"))
 
             elif progress == "puzzle4":
                 user_progress[user_id] = "ending"
-                await message.channel.send("「あなたがたはどうしたいですか？」")
-                await message.channel.send("A：発明品を世に広める B：封印する C：独占する")
+                await message.channel.send("「ええ！？望遠鏡で見ると違った世界が見える…あ、これ設計書によると未来が見える望遠鏡のようですね。」/n"
+                                           "「未来で何があるんだろう…」")
+                await message.channel.send("'!ending' A：発明品を世に広める B：封印する C：独占する")
         else:
             await message.channel.send("❌ 不正解です。")
 
