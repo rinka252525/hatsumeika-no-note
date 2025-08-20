@@ -53,7 +53,6 @@ async def on_guild_join(guild):
 # スタートコマンドで謎1を送信
 @bot.command()
 async def start(ctx):
-    await ctx.send("startが呼ばれました")  # デバッグ
     set_progress(ctx.guild.id, ctx.author.id, "puzzle1")
     await ctx.send("「博士のごちゃごちゃの部屋で管理していたので順番がばらばらになっちゃったんだ。\n"
                    "まずは並べ替えからお願いしていいかな？それぞれの紙にこんな丸があるから、これが順番を表していると思うんだけど…」")
