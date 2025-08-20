@@ -60,7 +60,7 @@ async def on_message(message):
     user_id = message.author.id
     progress = user_progress.get(user_id)
 
-    if progress:
+    if progress and progress != "ending":
         possible_answers = answers.get(progress, [])
         if message.content.strip().lower() in [a.lower() for a in possible_answers]:
             await message.channel.send("「わあありがとう！たしかにこの順番みたいだ！」")
