@@ -68,7 +68,7 @@ async def on_message(message):
 
     guild_id = message.guild.id if message.guild else None
     user_id = message.author.id
-    progress = user_progress.get(user_id)
+    progress = get_progress(guild_id, user_id)
     
 
     if progress and progress != "ending":
