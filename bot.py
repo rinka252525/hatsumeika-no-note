@@ -93,7 +93,7 @@ async def on_message(message):
                                            "「未来で何があるんだろう…」")
                 await message.channel.send("'!ending' A：発明品を世に広める B：封印する C：独占する")
         else:
-            await message.channel.send("❌ 不正解です。")
+            await message.channel.send("「うーん…違うみたいだ」")
 
 
     # 他のコマンドも動くように必要
