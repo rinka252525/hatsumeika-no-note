@@ -105,18 +105,18 @@ async def ending(ctx, choice: str):
 
     if choice == "A":
         file = discord.File("ending_A.png", filename="ending_A.png")
-        await ctx.send("✨祝福のメッセージ✨", file=file)
+        await ctx.send(file=file)
 
     elif choice == "B":
         file = discord.File("ending_B.png", filename="ending_B.png")
-        await ctx.send("📓暗転したノートの表紙が現れた…", file=file)
+        await ctx.send(file=file)
 
     elif choice == "C":
         file = discord.File("ending_C.png", filename="ending_C.png")
-        await ctx.send("📜怪しい契約書が差し出された…", file=file)
+        await ctx.send(file=file)
 
     else:
-        await ctx.send("選択肢は A / B / C から選んでください！")
+        await ctx.send("未来を A / B / C から選んでください！")
 
 
 # 実行
