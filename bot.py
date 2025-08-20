@@ -81,15 +81,15 @@ async def on_message(message):
 
             elif progress == "puzzle3":
                 user_progress[user_id] = "puzzle4"
-                await message.channel.send("「すごい！なるほど、望遠鏡だったのか！折角なので覗いてみてください！」/n"
-                                          "「この望遠鏡は肉眼じゃなくても君たちのPCから見れるようにしたよ。」")
+                await message.channel.send("「すごい！なるほど、望遠鏡だったのか！折角なので覗いてみてください！」\n"
+                                           "「この望遠鏡は肉眼じゃなくても君たちのPCから見れるようにしたよ。」")
                 await message.channel.send("そう言って彼は望遠鏡をさしだす。街の灯り、星の瞬き、すべてがある色で染まっていく。")
                 await message.channel.send(file=discord.File("puzzle4.png"))
                 await message.channel.send(file=discord.File("puzzle4.mp3"))
 
             elif progress == "puzzle4":
                 user_progress[user_id] = "ending"
-                await message.channel.send("「ええ！？望遠鏡で見ると違った世界が見える…あ、これ設計書によると未来が見える望遠鏡のようですね。」/n"
+                await message.channel.send("「ええ！？望遠鏡で見ると違った世界が見える…あ、これ設計書によると未来が見える望遠鏡のようですね。」\n"
                                            "「未来で何があるんだろう…」")
                 await message.channel.send("'!ending' A：発明品を世に広める B：封印する C：独占する")
         else:
